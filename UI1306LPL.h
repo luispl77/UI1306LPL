@@ -18,24 +18,25 @@
 #define buttonDOWN 33
 
 #define MODE_MENU 1
-#define MODE_FUNCTION 0
+#define MODE_FUNCTION 2
 
 class UI1306LPL {
   public:
 
     UI1306LPL(uint8_t mode = MODE_MENU, String func1 = "func1", UI1306LPL* UI1 = NULL, String func2 = "func2", UI1306LPL* UI2 = NULL,
      String func3 = "func3", UI1306LPL* UI3 = NULL, String func4 = "func4", UI1306LPL* UI4 = NULL, String func5 = "func5", UI1306LPL* UI5 = NULL) {
-      _mode = mode;
+      _mode = mode;   //decides if, when pressing a menu, it is called a custom function or another custom menu
       _func1 = func1;
       _func2 = func2;
       _func3 = func3;
-      _func4 = func4;
+      _func4 = func4;   //each 5 menus/functions available to press
       _func5 = func5;
       _UI1 = UI1;
       _UI2 = UI2;
-      _UI3 = UI3;
+      _UI3 = UI3;     //address to next menu
       _UI4 = UI4;
       _UI5 = UI5;
+      //_mode_function = mode_function; //address to function that gets executed upon button pressing a MODE_FUNCTION type of menu.
     }
     //public functions
     bool initializeDisplay();
@@ -67,6 +68,7 @@ class UI1306LPL {
     UI1306LPL* _UI3;
     UI1306LPL* _UI4;
     UI1306LPL* _UI5;
+    //int (*_mode_function)(void); //address to function
     uint8_t cursor = 0;
     uint8_t lcursor = 0;
 

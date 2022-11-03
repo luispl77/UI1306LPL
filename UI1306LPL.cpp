@@ -51,7 +51,7 @@ void UI1306LPL::runMenu(){
     }
   
     if(clickB()){
-    
+      break;
     }
     
     if(clickUP()){
@@ -126,19 +126,19 @@ void UI1306LPL::drawMenuFirst(String func1, String func2, String func3, String f
 
 void UI1306LPL::selectFunction(uint8_t text_cursor){
   if(text_cursor == 0){
-    
+    _UI1->runMenu();
   }
   else if(text_cursor == 1){
-    
+    _UI2->runMenu();
   }
   else if(text_cursor == 2){
-    //replayMode();
+    _UI3->runMenu();
   }
   else if(text_cursor == 3){
-    
+    _UI4->runMenu();
   }
   else if(text_cursor == 4){
-    //signalJammerMode();
+    _UI5->runMenu();
   }
 }
 
