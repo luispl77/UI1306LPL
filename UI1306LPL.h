@@ -23,8 +23,8 @@
 class UI1306LPL {
   public:
 
-    UI1306LPL(uint8_t mode = MODE_MENU, String func1 = "func1", UI1306LPL* UI1 = NULL, String func2 = "func2", UI1306LPL* UI2 = NULL,
-     String func3 = "func3", UI1306LPL* UI3 = NULL, String func4 = "func4", UI1306LPL* UI4 = NULL, String func5 = "func5", UI1306LPL* UI5 = NULL) {
+    UI1306LPL(uint8_t mode = MODE_MENU, String func1 = "null", UI1306LPL* UI1 = NULL, String func2 = "null", UI1306LPL* UI2 = NULL,
+     String func3 = "null", UI1306LPL* UI3 = NULL, String func4 = "null", UI1306LPL* UI4 = NULL, String func5 = "null", UI1306LPL* UI5 = NULL) {
       _mode = mode;   //decides if, when pressing a menu, it is called a custom function or another custom menu
       _func1 = func1;
       _func2 = func2;
