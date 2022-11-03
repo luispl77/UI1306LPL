@@ -1,79 +1,55 @@
-#ifndef RFM69LPL_h
-#define RFM69LPL_h
+#ifndef UI1306LPL_h
+#define UI1306LPL_h
 #include <Arduino.h>            //assumes Arduino IDE v1.0 or greater
 
-#define RF69OOK_SPI_CS  SS // SS is the SPI slave select pin, for instance D10 on atmega328
+#define BUILTIN_LED 2
 
-// INT0 on AVRs should be connected to RFM69's DIO0 (ex on Atmega328 it's D2, on Atmega644/1284 it's D2)
-#define RF69OOK_MODE_SLEEP       0 // XTAL OFF
-#define RF69OOK_MODE_STANDBY     1 // XTAL ON
-#define RF69OOK_MODE_SYNTH       2 // PLL ON
-#define RF69OOK_MODE_RX          3 // RX MODE
-#define RF69OOK_MODE_TX          4 // TX MODE
+#define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+#define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define INVERS 1
+#define NORMAL 0
+#define BLAC 2
 
-#define MOD_OOK 1 //on off keying modulation
-#define MOD_FSK 2 //frequency shit keying modulation
+#define MODE_MENU 1
+#define MODE_FUNCTION 0
 
-#define null                  0
-#define COURSE_TEMP_COEF    -90 // puts the temperature reading in the ballpark, user can fine tune the returned value
-#define RF69OOK_FSTEP 61.03515625 // == FXOSC/2^19 = 32mhz/2^19 (p13 in DS)
-
-class RFM69LPL {
+class UI1306LPL {
   public:
-    static volatile int RSSI; //most accurate RSSI during reception (closest to the reception)
-    static volatile byte _mode; //should be protected?
 
-    RFM69LPL(byte slaveSelectPin, byte interruptPin, bool isRFM69HW=true) {
-      _slaveSelectPin = slaveSelectPin;
-      _interruptPin = interruptPin;
-      _mode = RF69OOK_MODE_STANDBY;
-      _powerLevel = 31;
-      _isRFM69HW = isRFM69HW;
+    UI1306LPL(uint8_t mode = MODE_MENU, String func1 = "func1", UI1306LPL* UI1 = NULL, String func2 = "func2", UI1306LPL* UI2 = NULL,
+     String func3 = "func3", UI1306LPL* UI3 = NULL, String func4 = "func4", UI1306LPL* UI4 = NULL, String func5 = "func5", UI1306LPL* UI5 = NULL) {
+      _mode = mode;
+      _func1 = func1;
+      _func2 = func2;
+      _func3 = func3;
+      _func4 = func4;
+      _func5 = func5;
+      _UI1 = UI1;
+      _UI2 = UI2;
+      _UI3 = UI3;
+      _UI4 = UI4;
+      _UI5 = UI5;
     }
-
-    bool initialize();
-    uint32_t getFrequency();
-    void setFrequency(uint32_t freqHz);
-    void setFrequencyMHz(float f);
-    void setModulationType(uint8_t mod);
-    void setCS(byte newSPISlaveSelect);
-    int8_t readRSSI(bool forceTrigger=false);
-    void setHighPower(bool onOFF=true); //have to call it after initialize for RFM69HW
-    void setPowerLevel(byte level); //reduce/increase transmit power level
-    void sleep();
-    byte readTemperature(byte calFactor=0); //get CMOS temperature (8bit)
-    void rcCalibration(); //calibrate the internal RC oscillator for use in wide temperature variations - see datasheet section [4.3.5. RC Timer Accuracy]
-
-    // allow hacking registers by making these public
-    byte readReg(byte addr);
-    void writeReg(byte addr, byte val);
-    void readAllRegs();
-
-    // functions related to OOK mode
-    void receiveBegin();
-    void receiveEnd();
-    void transmitBegin();
-    void transmitEnd();
-    bool poll();
-    void send(bool signal);
-	  void setBandwidth(uint8_t bw);
-    void setBitrate(uint32_t bitrate);
-	  void setRSSIThreshold(int8_t rssi);
-	  void setFixedThreshold(uint8_t threshold);
-	  void setSensitivityBoost(uint8_t value);
-
-    void select();
-    void unselect();
-
+    //public functions
+    bool initializeDisplay();
+    void drawText(String text, int x, int y, int text_size, int inverse);
+    
+    //protected functions
   protected:
-    static RFM69LPL* selfPointer;
-    byte _slaveSelectPin;
-    byte _interruptPin;
-    byte _powerLevel;
-    bool _isRFM69HW;
-
-    void setMode(byte mode);
-    void setHighPowerRegs(bool onOff);
+    static UI1306LPL* selfPointer;
+    uint8_t _mode;
+    String _func1;
+    String _func2;
+    String _func3;
+    String _func4;
+    String _func5;
+    UI1306LPL* _UI1;
+    UI1306LPL* _UI2;
+    UI1306LPL* _UI3;
+    UI1306LPL* _UI4;
+    UI1306LPL* _UI5;
 
 };
 
