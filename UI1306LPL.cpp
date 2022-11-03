@@ -45,6 +45,7 @@ void UI1306LPL::drawRectangle(){
 
 void UI1306LPL::runMenu(){
   drawMenuFirst(_func1, _func2, _func3, _func4, _func5, cursor);
+  delay(200); //prevents double clicks
   while(1){
     if(clickA()){
       selectFunction(cursor);
