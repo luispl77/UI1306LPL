@@ -44,7 +44,7 @@ class UI1306LPL {
     void drawRectangle();
     void runMenu();
     void drawMenu(String func1, String func2, String func3, String func4, String func5, uint8_t text_cursor, uint8_t last_cursor);
-    void drawMenuFirst(String func1, String func2, String func3, String func4, String func5);
+    void drawMenuFirst(String func1, String func2, String func3, String func4, String func5, uint8_t text_cursor);
     void selectFunction(uint8_t text_cursor);
     void deleteLine(int l_cursor);
     bool clickA();

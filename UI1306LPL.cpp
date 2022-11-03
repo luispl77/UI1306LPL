@@ -44,7 +44,7 @@ void UI1306LPL::drawRectangle(){
 }
 
 void UI1306LPL::runMenu(){
-  drawMenuFirst(_func1, _func2, _func3, _func4, _func5);
+  drawMenuFirst(_func1, _func2, _func3, _func4, _func5, cursor);
   while(1){
     if(clickA()){
       selectFunction(cursor);
@@ -114,14 +114,14 @@ void UI1306LPL::drawMenu(String func1, String func2, String func3, String func4,
   delay(100);
 }
 
-void UI1306LPL::drawMenuFirst(String func1, String func2, String func3, String func4, String func5){
+void UI1306LPL::drawMenuFirst(String func1, String func2, String func3, String func4, String func5, uint8_t text_cursor){
   display.clearDisplay();
   drawRectangle();
-  drawText(func1, 10, 6, 1, NORMAL);
-  drawText(func2, 10, 17, 1, NORMAL);
-  drawText(func3, 10, 28, 1, NORMAL);
-  drawText(func4, 10, 39, 1, NORMAL);
-  drawText(func5, 10, 50, 1, NORMAL);
+  if(text_cursor == 0) drawText(func1, 10, 6, 1, INVERS); else drawText(func1, 10, 6, 1, NORMAL);
+  if(text_cursor == 1) drawText(func2, 10, 17, 1, INVERS); else drawText(func2, 10, 17, 1, NORMAL);
+  if(text_cursor == 2) drawText(func3, 10, 28, 1, INVERS); else drawText(func3, 10, 28, 1, NORMAL);
+  if(text_cursor == 3) drawText(func4, 10, 39, 1, INVERS); else drawText(func4, 10, 39, 1, NORMAL);
+  if(text_cursor == 4) drawText(func5, 10, 50, 1, INVERS); else drawText(func5, 10, 50, 1, NORMAL);
 }
 
 void UI1306LPL::selectFunction(uint8_t text_cursor){
@@ -190,10 +190,11 @@ void UI1306LPL::increment_cursor(uint8_t* text_cursor, uint8_t* last_cursor){
     *last_cursor = *text_cursor;
     (*text_cursor)++;
   }
-  else if(*text_cursor == 4){
+  else{
     *last_cursor = *text_cursor;
     *text_cursor = 0;
   }
+
 }
 
 void UI1306LPL::decrement_cursor(uint8_t* text_cursor, uint8_t* last_cursor){
@@ -201,7 +202,7 @@ void UI1306LPL::decrement_cursor(uint8_t* text_cursor, uint8_t* last_cursor){
     *last_cursor = *text_cursor;
     (*text_cursor)--;
   }
-  else if(text_cursor == 0){
+  else{
     *last_cursor = *text_cursor;
     *text_cursor = 4;
   }
