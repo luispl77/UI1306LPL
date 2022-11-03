@@ -12,6 +12,11 @@
 #define NORMAL 0
 #define BLAC 2
 
+#define buttonA 27
+#define buttonB 26
+#define buttonUP 25
+#define buttonDOWN 33
+
 #define MODE_MENU 1
 #define MODE_FUNCTION 0
 
@@ -35,6 +40,18 @@ class UI1306LPL {
     //public functions
     bool initializeDisplay();
     void drawText(String text, int x, int y, int text_size, int inverse);
+    void drawRectangle();
+    void runMenu();
+    void drawMenu(String func1, String func2, String func3, String func4, String func5, uint8_t text_cursor, uint8_t last_cursor);
+    void drawMenuFirst(String func1, String func2, String func3, String func4, String func5);
+    void selectFunction(uint8_t text_cursor);
+    void deleteLine(int l_cursor);
+    bool clickA();
+    bool clickB();
+    bool clickUP();
+    bool clickDOWN();
+    void increment_cursor(uint8_t* text_cursor, uint8_t* last_cursor);
+    void decrement_cursor(uint8_t* text_cursor, uint8_t* last_cursor);
     
     //protected functions
   protected:
@@ -50,6 +67,8 @@ class UI1306LPL {
     UI1306LPL* _UI3;
     UI1306LPL* _UI4;
     UI1306LPL* _UI5;
+    uint8_t cursor = 0;
+    uint8_t lcursor = 0;
 
 };
 
