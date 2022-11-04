@@ -243,3 +243,10 @@ void UI1306LPL::decrement_cursor(uint8_t* text_cursor, uint8_t* last_cursor){
     *text_cursor = limit;
   }
 }
+
+/*void setButtons(uint8_t button_A, uint8_t button_B, uint8_t button_UP, uint8_t button_DOWN){
+  pinMode(buttonUP, INPUT_PULLUP);
+  pinMode(buttonDOWN, INPUT_PULLUP);  
+  pinMode(buttonA, INPUT_PULLUP);
+  pinMode(buttonB, INPUT_PULLUP);
+}*/

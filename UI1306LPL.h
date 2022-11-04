@@ -25,7 +25,6 @@
 #define buttonUP 25
 #define buttonDOWN 33
 
-
 class UI1306LPL {
   public:
 
@@ -79,6 +78,7 @@ class UI1306LPL {
     uint8_t cursor = 0;
     uint8_t lcursor = 0;
     UI1306LPL* _last_menu;
+    
     
 
 };
