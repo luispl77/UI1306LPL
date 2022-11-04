@@ -20,10 +20,10 @@
 #define SHOW_BOOT_SCREEN 3
 #define NO_BOOT_SCREEN 2
 
-#define buttonA 27
-#define buttonB 26
-#define buttonUP 25
-#define buttonDOWN 33
+ extern uint8_t buttonA;
+ extern uint8_t buttonB;
+ extern uint8_t buttonUP;
+ extern uint8_t buttonDOWN;
 
 class UI1306LPL {
   public:
