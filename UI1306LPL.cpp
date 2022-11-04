@@ -80,6 +80,7 @@ void UI1306LPL::runMenu(){
 }
 
 void UI1306LPL::drawMenu(String func1, String func2, String func3, String func4, String func5, uint8_t text_cursor, uint8_t last_cursor){
+  if(text_cursor == last_cursor)return;
   if(text_cursor == 0){
     drawText(func1, 10, 6, 1, INVERS);
   }
