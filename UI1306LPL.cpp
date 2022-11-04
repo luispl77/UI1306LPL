@@ -8,18 +8,20 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 UI1306LPL* UI1306LPL::selfPointer;
 
-bool UI1306LPL::initializeDisplay(){
-  pinMode(BUILTIN_LED, OUTPUT);
+bool UI1306LPL::initializeDisplay(int boot_screen){ //default: dont show LPL boot screen when intializing
   if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
     Serial.println(F("SSD1306 allocation failed"));
     for(;;); // Don't proceed, loop forever
   }
   display.clearDisplay();
-  drawText("LPL", 64, 32, 2, 0);
-  display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
-  display.display();
-  delay(1500);
-  display.clearDisplay();
+  if(boot_screen == SHOW_BOOT_SCREEN){
+    drawText("LPL", 10, 15, 2, NORMAL);
+    drawText("ROBOTICS", 10, 35, 2, NORMAL);
+    display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
+    display.display();
+    delay(1500);
+    display.clearDisplay();
+  }
   display.display();
   return true;
 }

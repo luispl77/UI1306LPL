@@ -22,6 +22,9 @@
 
 #define SCROLL_DELAY 200
 
+#define SHOW_BOOT_SCREEN 3
+#define NO_BOOT_SCREEN 2
+
 class UI1306LPL {
   public:
 
@@ -42,7 +45,7 @@ class UI1306LPL {
       _last_menu = this;
     }
     //public functions
-    bool initializeDisplay();
+    bool initializeDisplay(int boot_screen = NO_BOOT_SCREEN);
     void drawText(String text, int x, int y, int text_size, int inverse);
     void drawRectangle();
     void runMenu();
