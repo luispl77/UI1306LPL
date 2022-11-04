@@ -20,6 +20,8 @@
 #define MODE_MENU 1
 #define MODE_FUNCTION 2
 
+#define SCROLL_DELAY 200
+
 class UI1306LPL {
   public:
 

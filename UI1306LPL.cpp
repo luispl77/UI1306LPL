@@ -124,7 +124,7 @@ void UI1306LPL::drawMenu(String func1, String func2, String func3, String func4,
     deleteLine(last_cursor);
     drawText(func5, 10, 50, 1, NORMAL);
   }
-  delay(100);
+  delay(SCROLL_DELAY);
 }
 
 void UI1306LPL::drawMenuFirst(String func1, String func2, String func3, String func4, String func5, uint8_t text_cursor){
