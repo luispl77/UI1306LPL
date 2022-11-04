@@ -60,8 +60,10 @@ void UI1306LPL::runMenu(){
     }
   
     if(clickB()){
-      if(_last_menu != this) _last_menu->runMenu();
-      //break;
+      //if(_last_menu != this) _last_menu->runMenu();
+      drawMenuFirst(_last_menu->_func1, _last_menu->_func2, _last_menu->_func3, _last_menu->_func4, _last_menu->_func5, _last_menu->cursor);
+      delay(200);
+      break;
     }
     
     if(clickUP()){
