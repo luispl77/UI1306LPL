@@ -146,23 +146,29 @@ void UI1306LPL::drawMenuFirst(String func1, String func2, String func3, String f
 }
 
 void UI1306LPL::selectFunction(uint8_t text_cursor){
+
   if(text_cursor == 0){
+    if(_UI1 == NULL)return;
     _UI1->_last_menu = this; //update last menu for B to back track to that
     _UI1->runMenu();
   }
   else if(text_cursor == 1){
+    if(_UI2 == NULL)return;
     _UI2->_last_menu = this;
     _UI2->runMenu();
   }
   else if(text_cursor == 2){
+    if(_UI3 == NULL)return;
     _UI3->_last_menu = this;
     _UI3->runMenu();
   }
   else if(text_cursor == 3){
+    if(_UI4 == NULL)return;
     _UI4->_last_menu = this;
     _UI4->runMenu();
   }
   else if(text_cursor == 4){
+    if(_UI5 == NULL)return;
     _UI5->_last_menu = this;
     _UI5->runMenu();
   }
