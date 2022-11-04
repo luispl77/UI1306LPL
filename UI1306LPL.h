@@ -12,11 +12,6 @@
 #define NORMAL 0
 #define BLAC 2
 
-#define buttonA 27
-#define buttonB 26
-#define buttonUP 25
-#define buttonDOWN 33
-
 #define MODE_MENU 1
 #define MODE_FUNCTION 2
 
@@ -24,6 +19,12 @@
 
 #define SHOW_BOOT_SCREEN 3
 #define NO_BOOT_SCREEN 2
+
+#define buttonA 27
+#define buttonB 26
+#define buttonUP 25
+#define buttonDOWN 33
+
 
 class UI1306LPL {
   public:

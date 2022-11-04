@@ -56,6 +56,7 @@ void UI1306LPL::runMenu(){
     display.clearDisplay();
     display.display();
     _mode_function();
+    drawMenuFirst(_last_menu->_func1, _last_menu->_func2, _last_menu->_func3, _last_menu->_func4, _last_menu->_func5, _last_menu->cursor);
     return;
   }
   drawMenuFirst(_func1, _func2, _func3, _func4, _func5, cursor);
