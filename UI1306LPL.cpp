@@ -19,6 +19,8 @@ bool UI1306LPL::initializeDisplay(){
   display.drawRect(0, 0, display.width(), display.height(), SSD1306_WHITE);
   display.display();
   delay(1500);
+  display.clearDisplay();
+  display.display();
   return true;
 }
 
@@ -58,7 +60,8 @@ void UI1306LPL::runMenu(){
     }
   
     if(clickB()){
-      break;
+      if(_last_menu != this) _last_menu->runMenu();
+      //break;
     }
     
     if(clickUP()){
@@ -133,18 +136,23 @@ void UI1306LPL::drawMenuFirst(String func1, String func2, String func3, String f
 
 void UI1306LPL::selectFunction(uint8_t text_cursor){
   if(text_cursor == 0){
+    _UI1->_last_menu = this; //update last menu for B to back track to that
     _UI1->runMenu();
   }
   else if(text_cursor == 1){
+    _UI2->_last_menu = this;
     _UI2->runMenu();
   }
   else if(text_cursor == 2){
+    _UI3->_last_menu = this;
     _UI3->runMenu();
   }
   else if(text_cursor == 3){
+    _UI4->_last_menu = this;
     _UI4->runMenu();
   }
   else if(text_cursor == 4){
+    _UI5->_last_menu = this;
     _UI5->runMenu();
   }
 }

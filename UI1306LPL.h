@@ -37,6 +37,7 @@ class UI1306LPL {
       _UI4 = UI4;
       _UI5 = UI5;
       _mode_function = mode_function; //address to function that gets executed upon button pressing a MODE_FUNCTION type of menu.
+      _last_menu = this;
     }
     //public functions
     bool initializeDisplay();
@@ -71,6 +72,8 @@ class UI1306LPL {
     void (*_mode_function)(void); //address to function
     uint8_t cursor = 0;
     uint8_t lcursor = 0;
+    UI1306LPL* _last_menu;
+    
 
 };
 
