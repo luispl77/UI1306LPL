@@ -44,6 +44,12 @@ void UI1306LPL::drawRectangle(){
 }
 
 void UI1306LPL::runMenu(){
+  if(_mode == MODE_FUNCTION){
+    display.clearDisplay();
+    display.display();
+    _mode_function();
+    return;
+  }
   drawMenuFirst(_func1, _func2, _func3, _func4, _func5, cursor);
   delay(200); //prevents double clicks
   while(1){

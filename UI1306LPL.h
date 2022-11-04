@@ -23,7 +23,7 @@
 class UI1306LPL {
   public:
 
-    UI1306LPL(uint8_t mode = MODE_MENU, String func1 = "null", UI1306LPL* UI1 = NULL, String func2 = "null", UI1306LPL* UI2 = NULL,
+    UI1306LPL(void (*mode_function)(void) = NULL, uint8_t mode = MODE_MENU, String func1 = "null", UI1306LPL* UI1 = NULL, String func2 = "null", UI1306LPL* UI2 = NULL,
      String func3 = "null", UI1306LPL* UI3 = NULL, String func4 = "null", UI1306LPL* UI4 = NULL, String func5 = "null", UI1306LPL* UI5 = NULL) {
       _mode = mode;   //decides if, when pressing a menu, it is called a custom function or another custom menu
       _func1 = func1;
@@ -36,7 +36,7 @@ class UI1306LPL {
       _UI3 = UI3;     //address to next menu
       _UI4 = UI4;
       _UI5 = UI5;
-      //_mode_function = mode_function; //address to function that gets executed upon button pressing a MODE_FUNCTION type of menu.
+      _mode_function = mode_function; //address to function that gets executed upon button pressing a MODE_FUNCTION type of menu.
     }
     //public functions
     bool initializeDisplay();
@@ -68,7 +68,7 @@ class UI1306LPL {
     UI1306LPL* _UI3;
     UI1306LPL* _UI4;
     UI1306LPL* _UI5;
-    //int (*_mode_function)(void); //address to function
+    void (*_mode_function)(void); //address to function
     uint8_t cursor = 0;
     uint8_t lcursor = 0;
 
