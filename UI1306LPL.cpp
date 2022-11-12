@@ -51,6 +51,11 @@ void UI1306LPL::drawRectangle(){
   display.display();
 }
 
+void UI1306LPL::updateText(String text, int x, int y, int text_size, int inverse, int n){
+  display.fillRect(x, y, 5 * n + 1, 8, SSD1306_BLACK); 
+  drawText(text, x, y, text_size, inverse);
+}
+
 void UI1306LPL::runMenu(){
   if(_mode == MODE_FUNCTION){
     display.clearDisplay();
@@ -250,10 +255,3 @@ void UI1306LPL::decrement_cursor(uint8_t* text_cursor, uint8_t* last_cursor){
     *text_cursor = limit;
   }
 }
-
-/*void setButtons(uint8_t button_A, uint8_t button_B, uint8_t button_UP, uint8_t button_DOWN){
-  pinMode(buttonUP, INPUT_PULLUP);
-  pinMode(buttonDOWN, INPUT_PULLUP);  
-  pinMode(buttonA, INPUT_PULLUP);
-  pinMode(buttonB, INPUT_PULLUP);
-}*/
