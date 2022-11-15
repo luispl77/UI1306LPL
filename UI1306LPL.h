@@ -48,6 +48,7 @@ class UI1306LPL {
     bool initializeDisplay(int boot_screen = NO_BOOT_SCREEN);
     void drawText(String text, int x, int y, int text_size, int inverse);
     void updateText(String text, int x, int y, int text_size, int inverse, int n);
+    void drawPixel(int x, int y, int color);
     void drawRectangle();
     void runMenu();
     void drawMenu(String func1, String func2, String func3, String func4, String func5, uint8_t text_cursor, uint8_t last_cursor);

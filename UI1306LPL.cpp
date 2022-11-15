@@ -56,6 +56,11 @@ void UI1306LPL::updateText(String text, int x, int y, int text_size, int inverse
   drawText(text, x, y, text_size, inverse);
 }
 
+void UI1306LPL::drawPixel(int x, int y, int color){
+  display.drawPixel(x, y, color);
+  display.display();
+}
+
 void UI1306LPL::runMenu(){
   if(_mode == MODE_FUNCTION){
     display.clearDisplay();
