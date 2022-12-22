@@ -187,7 +187,7 @@ void UI1306LPL::selectFunction(uint8_t text_cursor){
 
 
 void UI1306LPL::deleteLine(int l_cursor){
-  display.fillRect(10, 6 + (l_cursor * 11), 100, 10, SSD1306_BLACK);
+  display.fillRect(10, 6 + (l_cursor * 11), 110, 10, SSD1306_BLACK);
   display.display();
 }
 
