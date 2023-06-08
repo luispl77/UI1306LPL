@@ -84,5 +84,5 @@ class UI1306LPL {
     
 
 };
-
+static UI1306LPL UI;
 #endif
