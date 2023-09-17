@@ -51,6 +51,16 @@ void UI1306LPL::drawRectangle(){
   display.display();
 }
 
+void UI1306LPL::fillRectangle(int x1, int y1, int x2, int y2, int color){
+  display.fillRect(x1, y1, x2, y2, color);
+  display.display();
+}
+
+void UI1306LPL::clear(){
+  display.clearDisplay();
+  display.display();
+}
+
 void UI1306LPL::updateText(String text, int x, int y, int text_size, int inverse, int n){
   display.fillRect(x, y, 5 * n + 1, 8, SSD1306_BLACK); 
   drawText(text, x, y, text_size, inverse);

@@ -50,6 +50,8 @@ class UI1306LPL {
     void updateText(String text, int x, int y, int text_size, int inverse, int n);
     void drawPixel(int x, int y, int color);
     void drawRectangle();
+    void fillRectangle(int x1, int y1, int x2, int y2, int color);
+    void clear();
     void runMenu();
     void drawMenu(String func1, String func2, String func3, String func4, String func5, uint8_t text_cursor, uint8_t last_cursor);
     void drawMenuFirst(String func1, String func2, String func3, String func4, String func5, uint8_t text_cursor);
